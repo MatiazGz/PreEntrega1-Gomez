@@ -1,5 +1,6 @@
 import './App.css'
 import { CartWidget } from './components/CartWidget'
+import { ILC } from './components/ItemListContainer'
 import {NavBar} from "./components/NavBar"
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
     <>
       <NavBar/>
       <CartWidget/>
+      <ILC greetings="Hello"/>
     </>
   )
 }
