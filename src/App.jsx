@@ -1,14 +1,11 @@
 import './App.css'
-import { CartWidget } from './components/CartWidget'
-import { ILC } from './components/ItemListContainer'
-import {NavBar} from "./components/NavBar"
+import ItemListContainer from './components/ItemListContainer'
 
 function App() {
+
   return (
     <>
-      <NavBar/>
-      <CartWidget/>
-      <ILC greetings="Hello"/>
+      <ItemListContainer/>
     </>
   )
 }

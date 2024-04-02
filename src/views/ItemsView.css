@@ -1,0 +1,10 @@
+.itemView{
+    max-width: 90%;
+    margin: auto;
+    text-align: center;
+}
+
+.itemView img{
+    display: block;
+    max-width: 100%;
+}
