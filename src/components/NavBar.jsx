@@ -1,12 +1,21 @@
 import { CartWidget } from "./CartWidget";
 import { NavLink } from "react-router-dom";
+
+import data from "../data/products.json";
+
+const categories = data.map((item) => item.category);
+
+const uniqueCategories = new Set(categories);
+
 export const NavBar = () => {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
         <h1 className="navbar-brand">
-          <NavLink  className="navbar-brand" to="/">React Shop</NavLink>
-        </h1>       
+          <NavLink className="navbar-brand" to="/">
+            React Shop
+          </NavLink>
+        </h1>
         <button
           className="navbar-toggler"
           type="button"
@@ -30,8 +39,26 @@ export const NavBar = () => {
                 Contact
               </NavLink>
             </li>
+            <li className="nav-item dropdown">
+              <a
+                className="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Categories
+              </a>
+              <ul className="dropdown-menu">
+                {[...uniqueCategories].map((category) => (
+                  <NavLink key={category} to={`/${category}`}>
+                    <span className="nav-link">{category}</span>
+                  </NavLink>
+                ))}
+              </ul>
+            </li>
           </ul>
-          <CartWidget/>
+          <CartWidget />
           <form className="d-flex" role="search">
             <input
               className="form-control me-2"
