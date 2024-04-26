@@ -5,7 +5,7 @@ import CartItem from "../cartItem/CartItem";
 import "./cart.css"
 
 const Cart = () => {
-    const { cart, precioTotal, emptyCart } = useContext(CartContext);
+    const { cart, totalPrice, emptyCart } = useContext(CartContext);
 
     const handleEmptyCart = () => {
         emptyCart();
@@ -21,9 +21,9 @@ const Cart = () => {
             </div>
             {cart.length > 0 ? (
                 <div className="cartSummary">
-                    <h2 className="total">Total: ${precioTotal()}</h2>
+                    <h2 className="total">Total: ${totalPrice()}</h2>
                     <div className="buttonsContainer">
-                        <button onClick={handleEmptyCart}>
+                        <button className="btn" onClick={handleEmptyCart}>
                             Vaciar carrito
                         </button>
                         <Link to="/checkout" className="Link">

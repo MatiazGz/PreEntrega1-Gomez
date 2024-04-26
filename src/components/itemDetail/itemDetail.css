@@ -1,10 +1,17 @@
-.itemView{
-    max-width: 90%;
-    margin: auto;
-    text-align: center;
+.itemView {
+  max-width: 90%;
+  margin: auto;
+  text-align: center;
 }
 
-.itemView img{
-    display: block;
-    max-width: 100%;
+.itemView img {
+  display: block;
+  max-width: 100%;
+}
+.btn {
+  background-color: #343231;
+  padding: 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #fff;
 }

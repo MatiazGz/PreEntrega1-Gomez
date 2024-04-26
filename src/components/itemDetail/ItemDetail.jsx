@@ -14,7 +14,7 @@ const ItemDetail = ({ product }) => {
     };
 
     return (
-        <div className={styles.container}>
+        <div className="container">
             {product && (
                 <div>
                     <img  src={product.imageURL} alt={product.title} />
@@ -29,7 +29,7 @@ const ItemDetail = ({ product }) => {
                             stock={product.stock}
                         />
                         <div>
-                            <button onClick={handleAddToCart}>
+                            <button className="btn" onClick={handleAddToCart}>
                                 Agregar al carrito
                             </button>
                             <Link to="/" className="Link">

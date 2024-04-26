@@ -13,10 +13,10 @@ const Card = ({ producto }) => {
           />
         </div>
         <div className="cardBody">
-          <h2 className="titulo">{producto.title}</h2>
-          <p className="precio">${producto.price}</p>
+          <h3 className="titulo">{producto.title}</h3>
+          <h2 className="precio">${producto.price}</h2>
           <Link to={`/item/${producto.id}`} className="Link">
-            ver mas
+            Mas información
           </Link>
         </div>
       </div>

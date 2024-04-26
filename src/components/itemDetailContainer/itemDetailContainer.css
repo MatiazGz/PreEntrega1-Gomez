@@ -1,0 +1,10 @@
+.Detail{
+    display: flex;
+    justify-content: center;
+    margin: 50px;
+}
+.DTC{
+    display: flex;
+    padding-left: 25px;
+    
+}

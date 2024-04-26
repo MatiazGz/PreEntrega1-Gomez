@@ -4,14 +4,14 @@ import { Link } from "react-router-dom";
 import CheckoutForm from "../checkOutForm/CheckoutForm";
 
 const Checkout = () => {
-    const { cart, precioTotal, emptyCart, createOrder } = useContext(CartContext);
+    const { cart, totalPrice, emptyCart, createOrder } = useContext(CartContext);
     const [formData, setFormData] = useState({
         nombre: '',
         telefono: '',
         email: '',
         confirmarEmail: '',
         cart: cart,
-        precioTotal: precioTotal()
+        precioTotal: totalPrice()
     });
     const [validationErrors, setValidationErrors] = useState({});
     const [orderInfo, setOrderInfo] = useState(null);

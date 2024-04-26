@@ -69,6 +69,15 @@ const NavBar = () => {
                 <NavDropdown.Item as={NavLink} to="/">
                   Todos los productos
                 </NavDropdown.Item>
+                <NavDropdown.Item as={NavLink} to="/category/verano">
+                  Verano
+                </NavDropdown.Item>
+                <NavDropdown.Item as={NavLink} to="/category/invierno">
+                  Invierno
+                </NavDropdown.Item>
+                <NavDropdown.Item as={NavLink} to="/category/deportes">
+                  Deportes
+                </NavDropdown.Item>
                 {categories.map((cat, index) => (
                   <NavDropdown.Item
                     key={index}

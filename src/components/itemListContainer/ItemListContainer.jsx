@@ -4,6 +4,7 @@ import ItemList from "../itemList/ItemList";
 import { collection, getDocs, query, where } from "firebase/firestore"
 import { db } from "../../firebase/client"
 import "./ItemListContainer.css"
+import { Container } from 'react-bootstrap';
 
 const ItemListContainer = () => {
   const { categoryId } = useParams();
@@ -12,7 +13,7 @@ const ItemListContainer = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const productsRef = collection(db, 'products');
+        const productsRef = collection(db, "Products");
         let productsFiltered;
 
         if (categoryId) {
@@ -37,21 +38,22 @@ const ItemListContainer = () => {
   }, [categoryId]);
 
   return (
-    <div className="contenedor">
+    <Container>      
       <div>
-      <h3 style={{display: 'flex', justifyContent:'center', marginTop:'40px'}} >{categoryId ? categoryId : 'Todos los productos'}</h3>
+      <h3 style={{display: 'flex', justifyContent:'center', marginTop:'40px'}} >{categoryId ? categoryId : "Nuestros productos"}</h3>
       </div>
       <div className="container">
         {products.length === 0 && (
           <div>
-            <h3>parece que la categoria no existe</h3>
-            <Link className='Link' to="/"> volver al inicio</Link>
+            <h3>La categoría no existe</h3>
+            <Link className="link" to="/"> volver al inicio</Link>
           </div>
 
         )}
         <ItemList products={products} />
       </div>
-    </div>
+    </Container>
+    
   );
 };
 

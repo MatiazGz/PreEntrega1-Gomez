@@ -1,3 +1,4 @@
+import "./itemCounter.css"
 const ProductCounter = ({ contador, setCounter, stock }) => {
     const counterIncrease = () => {
         contador < stock && setCounter(contador + 1);
@@ -9,9 +10,9 @@ const ProductCounter = ({ contador, setCounter, stock }) => {
 
     return (
         <div>
-            <button onClick={counterDecrese}>-</button>
+            <button className="btn"  onClick={counterDecrese}>-</button>
             <span >{contador}</span>
-            <button onClick={counterIncrease}>+</button>
+            <button className="btn" onClick={counterIncrease}>+</button>
         </div>
     )
 }
