@@ -1,17 +1,27 @@
 import "./Card.css";
 import { Link } from "react-router-dom";
-import {products as initialProducts} from "../data/products.json"
 
-const product = initialProducts
-
-function Card({ title = "titulo por defecto", description = "descripcion por defecto"}) {
-    
-    return (<div className="Card" key={product.id}>
-        <Link to = {`/product/${product.id}`}>
-        <h2 className="cont">{title}</h2>        
-        </Link> 
-        <p className="cont">{description}</p>
-        </div>);
-}
+const Card = ({ producto }) => {
+  return (
+    <div className="card">
+      <div key={producto.id} className="card">
+        <div className="imagenContainer">
+          <img
+            src={producto.imageURL}
+            alt={producto.title}
+            className="cardImagen"
+          />
+        </div>
+        <div className="cardBody">
+          <h2 className="titulo">{producto.title}</h2>
+          <p className="precio">${producto.price}</p>
+          <Link to={`/item/${producto.id}`} className="Link">
+            ver mas
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default Card;

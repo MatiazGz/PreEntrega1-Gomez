@@ -1,43 +1,58 @@
-import { useParams } from "react-router";
-import { useEffect, useState } from "react";
-import { Container, Card, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import data from "../data/products.json";
+import { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import ItemList from "../itemList/ItemList";
+import { collection, getDocs, query, where } from "firebase/firestore"
+import { db } from "../../firebase/client"
+import "./ItemListContainer.css"
 
-export const ItemListContainer = () => {
+const ItemListContainer = () => {
+  const { categoryId } = useParams();
   const [products, setProducts] = useState([]);
-  const { categoryId } = useParams;
 
   useEffect(() => {
-    if (categoryId) {
-      const productsFilteredByCategory = data.filter(
-       product => product.category === categoryId
-      );
-      console.log({ data, productsFilteredByCategory })
-      setProducts(productsFilteredByCategory);
-    } else {
-      setProducts(data);
-    }
+    const fetchProducts = async () => {
+      try {
+        const productsRef = collection(db, 'products');
+        let productsFiltered;
+
+        if (categoryId) {
+          productsFiltered = query(productsRef, where("categoryId", "==", categoryId));
+        } else {
+          productsFiltered = productsRef;
+        }
+
+        const snapshot = await getDocs(productsFiltered);
+
+        setProducts(
+          snapshot.docs.map((doc) => {
+            return { ...doc.data(), id: doc.id }
+          })
+        );
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      } 
+    };
+
+    fetchProducts();
   }, [categoryId]);
 
   return (
-    <Container>
-      <h1>Nuestros productos</h1>
-      <Container className="d-flex flex-wrap">
-        {products.map((product) => (
-          <Card key={product.id} style={{ flex: 1 }}>
-            <Card.Img variant="top" src={product.image} height="200" />
-            <Card.Body>
-              <Card.Title>{product.name}</Card.Title>
-              <Card.Text>{product.detail}</Card.Text>
-              <Card.Text>{product.category}</Card.Text>
-              <Link to={`/products/${product.id}`}>
-                <Button className= "bg-dark" variant="primary">detalle</Button>
-              </Link>
-            </Card.Body>
-          </Card>
-        ))}
-      </Container>
-    </Container>
+    <div className="contenedor">
+      <div>
+      <h3 style={{display: 'flex', justifyContent:'center', marginTop:'40px'}} >{categoryId ? categoryId : 'Todos los productos'}</h3>
+      </div>
+      <div className="container">
+        {products.length === 0 && (
+          <div>
+            <h3>parece que la categoria no existe</h3>
+            <Link className='Link' to="/"> volver al inicio</Link>
+          </div>
+
+        )}
+        <ItemList products={products} />
+      </div>
+    </div>
   );
 };
+
+export default ItemListContainer;

@@ -1,13 +1,39 @@
-import { CartWidget } from "./CartWidget";
+import { useState, useEffect } from "react";
+import { CartWidget } from "../cartWidget/CartWidget";
 import { NavLink } from "react-router-dom";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../firebase/client";
 
-import data from "../data/products.json";
+const NavBar = () => {
+  const [categories, setCategories] = useState([]);
 
-const categories = data.map((item) => item.category);
+  const fetchCategories = async () => {
+    try {
+      const productsRef = collection(db, "products");
+      const productsSnapshot = await getDocs(productsRef);
 
-const uniqueCategories = new Set(categories);
+      const uniqueCategories = [];
 
-export const NavBar = () => {
+      productsSnapshot.forEach((doc) => {
+        const productData = doc.data();
+        if (
+          productData.categoryId &&
+          !uniqueCategories.includes(productData.categoryId)
+        ) {
+          uniqueCategories.push(productData.categoryId);
+        }
+      });
+
+      setCategories(uniqueCategories);
+    } catch (error) {
+      console.error("Error al obtener categorías", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
@@ -34,28 +60,25 @@ export const NavBar = () => {
                 Home
               </NavLink>
             </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/contact">
-                Contact
-              </NavLink>
-            </li>
             <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
+              <NavDropdown
+                title="productos"
+                className="categoria"
+                id="dropdown-basic"
               >
-                Categories
-              </a>
-              <ul className="dropdown-menu">
-                {[...uniqueCategories].map((category) => (
-                  <NavLink key={category} to={`/${category}`}>
-                    <span className="nav-link">{category}</span>
-                  </NavLink>
+                <NavDropdown.Item as={NavLink} to="/">
+                  Todos los productos
+                </NavDropdown.Item>
+                {categories.map((cat, index) => (
+                  <NavDropdown.Item
+                    key={index}
+                    as={NavLink}
+                    to={`/category/${cat}`}
+                  >
+                    {cat}
+                  </NavDropdown.Item>
                 ))}
-              </ul>
+              </NavDropdown>
             </li>
           </ul>
           <CartWidget />
@@ -75,3 +98,4 @@ export const NavBar = () => {
     </nav>
   );
 };
+export default NavBar;
