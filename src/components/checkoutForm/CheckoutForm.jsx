@@ -29,79 +29,83 @@ const CheckoutForm = ({
       {orderInfo ? (
         renderOrderInfo()
       ) : (
-        <div className="checkout">
+        <div>
           <div>
-            <h3>Resumen de la Orden</h3>
+            <h3>Finaliza tu orden</h3>
             <ul>
               {formData.cart.map((product) => (
                 <li key={product.id}>
-                  {product.title} - Cantidad: {product.cantidad}
+                  {product.title} - Cantidad: {product.qty}
                 </li>
               ))}
             </ul>
             <strong>Total: ${formData.precioTotal}</strong>
           </div>
-          <form className="checkoutForm" onSubmit={handleSubmit}>
-            <label>
-              Nombre:
-              <input
-                placeholder="Ingrese su nombre"
-                type="text"
-                name="nombre"
-                value={formData.nombre}
-                onChange={handleChange}
-                required
-              />
-              {orderAttempted && validationErrors.nombre && (
-                <span className="error">{validationErrors.nombre}</span>
-              )}
-            </label>
-            <label>
-              Teléfono:
-              <input
-                placeholder="Ingrese su teléfono"
-                type="tel"
-                name="telefono"
-                value={formData.telefono}
-                onChange={handleChange}
-                required
-              />
-              {orderAttempted && validationErrors.telefono && (
-                <span className="error">{validationErrors.telefono}</span>
-              )}
-            </label>
-            <label>
-              Email:
-              <input
-                placeholder="Ingrese su email"
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-              />
-              {orderAttempted && validationErrors.email && (
-                <span className="error">{validationErrors.email}</span>
-              )}
-            </label>
-            <label>
-              Confirmar Email:
-              <input
-                placeholder="Confirme su email"
-                type="email"
-                name="confirmarEmail"
-                value={formData.confirmarEmail}
-                onChange={handleChange}
-                required
-              />
-              {orderAttempted && validationErrors.confirmarEmail && (
-                <span className="error">{validationErrors.confirmarEmail}</span>
-              )}
-            </label>
-            <button className="btn" type="submit">
-              Realizar Pedido
-            </button>
-          </form>
+          <div>
+            <form onSubmit={handleSubmit}>
+              <label>
+                Nombre:
+                <input
+                  placeholder="Ingrese su nombre"
+                  type="text"
+                  name="nombre"
+                  value={formData.nombre}
+                  onChange={handleChange}
+                  required
+                />
+                {orderAttempted && validationErrors.nombre && (
+                  <span className="error">{validationErrors.nombre}</span>
+                )}
+              </label>
+              <label>
+                Teléfono:
+                <input
+                  placeholder="Ingrese su teléfono"
+                  type="tel"
+                  name="telefono"
+                  value={formData.telefono}
+                  onChange={handleChange}
+                  required
+                />
+                {orderAttempted && validationErrors.telefono && (
+                  <span className="error">{validationErrors.telefono}</span>
+                )}
+              </label>
+              <label>
+                Email:
+                <input
+                  placeholder="Ingrese su email"
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+                {orderAttempted && validationErrors.email && (
+                  <span className="error">{validationErrors.email}</span>
+                )}
+              </label>
+              <label>
+                Confirmar Email:
+                <input
+                  placeholder="Confirme su email"
+                  type="email"
+                  name="confirmarEmail"
+                  value={formData.confirmarEmail}
+                  onChange={handleChange}
+                  required
+                />
+                {orderAttempted && validationErrors.confirmarEmail && (
+                  <span className="error">
+                    {validationErrors.confirmarEmail}
+                  </span>
+                )}
+              </label>
+              <button className="Link" type="submit">
+                Realizar Pedido
+              </button>
+            </form>
+          </div>
         </div>
       )}
     </div>

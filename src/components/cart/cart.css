@@ -1,60 +1,57 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
 }
 
 .productList {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
 }
 
 .title {
-    font-size: 24px;
-    margin-bottom: 20px;
+  font-size: 24px;
+  margin-bottom: 20px;
 }
 
 .productContainer {
-    display: flex;
-    align-items: center;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
 }
 
-
 .cartSummary {
-    margin-top: 20px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .total {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
-
 .emptyCartMessage {
-    font-size: 18px;
-    margin-top: 20px;
+  font-size: 18px;
+  margin-top: 20px;
 }
 
 .cartAcciones {
-    align-items: center;
+  align-items: center;
 }
 
 .btn {
-    background-color: #343231;
-    padding: 8px;
-    border-radius: 4px;
-    text-decoration: none;
-    color: #fff;
-    margin: 20px;
-  }
-  
+  background-color: #343231;
+  padding: 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #fff;
+  margin: 20px;
+}

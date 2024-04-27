@@ -1,20 +1,24 @@
-import "./itemCounter.css"
-const ProductCounter = ({ contador, setCounter, stock }) => {
-    const counterIncrease = () => {
-        contador < stock && setCounter(contador + 1);
-    }
+import "./itemCounter.css";
+const ProductCounter = ({ contador, setContador, stock }) => {
+  const counterIncrease = () => {
+    contador < stock && setContador(contador + 1);
+  };
 
-    const counterDecrese = () => {
-        contador > 1 && setCounter(contador - 1);
-    }
+  const counterDecrese = () => {
+    contador > 1 && setContador(contador - 1);
+  };
 
-    return (
-        <div>
-            <button className="btn"  onClick={counterDecrese}>-</button>
-            <span >{contador}</span>
-            <button className="btn" onClick={counterIncrease}>+</button>
-        </div>
-    )
-}
+  return (
+    <div>
+      <button className="Link" onClick={counterDecrese}>
+        -
+      </button>
+      <span className="cval">{contador}</span>
+      <button className="Link" onClick={counterIncrease}>
+        +
+      </button>
+    </div>
+  );
+};
 
 export default ProductCounter;

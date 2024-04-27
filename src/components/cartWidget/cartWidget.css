@@ -1,14 +1,14 @@
-.widget{
-    background-color: rgb(113, 224, 163);
-    margin : 10px;
-    border-radius: 50%;
-    padding: 8px;
-    border: none;
+.widget {
+  background-color: rgb(25, 135, 84);
+  margin: 10px;
+  border-radius: 50%;
+  padding: 8px;
+  border: none;
 }
-.widget i {
-    color: aliceblue;
+.widget:hover {
+  background-color: #696969;
 }
 .contador {
-    color: rgb(37, 36, 36);
-    margin-left: .3125rem;
+  color: rgb(255, 255, 255);
+  margin-left: 0.3125rem;
 }
