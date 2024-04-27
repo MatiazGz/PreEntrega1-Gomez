@@ -13,7 +13,7 @@
 }
 
 .title {
-  font-size: 24px;
+  font-size: 84px;
   margin-bottom: 20px;
 }
 
@@ -43,15 +43,4 @@
   margin-top: 20px;
 }
 
-.cartAcciones {
-  align-items: center;
-}
 
-.btn {
-  background-color: #343231;
-  padding: 8px;
-  border-radius: 4px;
-  text-decoration: none;
-  color: #fff;
-  margin: 20px;
-}

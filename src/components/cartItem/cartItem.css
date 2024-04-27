@@ -10,3 +10,6 @@
 .cartbtn:hover {
   background-color: #696969;
 }
+.productImage{
+    max-height: 400px;    
+}
